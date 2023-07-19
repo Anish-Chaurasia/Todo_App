@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { IoMdDoneAll, IoIosCloseCircleOutline} from "react-icons/io";
+import { IoClipboardOutline, IoReloadOutline } from "react-icons/io5";
 
 function App() {
 
@@ -26,43 +28,38 @@ function App() {
 
 
     return (
-        <>
-            <div className="external">
-                <div className="internal">
-                    <h1>TODO </h1>
 
+        <div>
+            <h2 >TODO - LIST</h2>
 
-                    <input type="text" placeholder="Add New Task" className="taskinput" value={initialval} onChange={(e) => setInitialval(e.target.value)} />
-                    <button type="button" className="addbutton" onClick={addTask}> Add </button>
-                    <button type="button" className="clearbutton" onClick={clearall} >Reset</button>
+            < div className="container">
 
+                <div className="item1">
 
-
-
-                    {
-                        listval.map((item, index) => {
-                            return (<>
-                                <p className="list" key={index}>{item}  <button type="button" className="removebutton" onClick={() => removeTask(index)}>Remove</button></p>
-
-                            </>)
-
-
-                        })
-                    }
-
-
-
+                    <input id="text" className="item1-item" type="text" placeholder="Add New Task" title="Type New Task" value={initialval} onChange={(e) => setInitialval(e.target.value)} />
+                    <div className="item1btn">
+                        <button id="addbtn" className="item1-item" type="button" title="Add Task" onClick={addTask}> <IoClipboardOutline /> </button>
+                        <button id="resetbtn" className="item1-item" type="button" title="Delete All Task" onClick={clearall} ><IoReloadOutline /></button>
+                    </div>
                 </div>
 
+                {
+                    listval.map((item, index) => {
+                        return (<div className="item2">
+                            <p className="item2-item" key={index}>{item} </p>
+                            <button className="item2-item" type="button" id="removebtn" title="Delete Task" onClick={() => removeTask(index)}><IoMdDoneAll /></button>
+
+
+                        </div>)
+
+
+                    })
+                }
             </div>
-            <p className="name">&#9827; anish_chaurasia</p>
-
-
-        </>
 
 
 
-    );
+        </div>);
 
 }
 
