@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { IoMdDoneAll, IoIosCloseCircleOutline} from "react-icons/io";
-import { IoClipboardOutline, IoReloadOutline } from "react-icons/io5";
+import {  IoReloadOutline } from "react-icons/io5";
+import { FiTrash2, FiPlus } from "react-icons/fi";
 
 function App() {
 
@@ -30,7 +30,8 @@ function App() {
     return (
 
         <div>
-            <h2 >TODO - LIST</h2>
+            <h2 >{listval.length}  Task in "TODO LIST"</h2>
+           
 
             < div className="container">
 
@@ -38,7 +39,7 @@ function App() {
 
                     <input id="text" className="item1-item" type="text" placeholder="Add New Task" title="Type New Task" value={initialval} onChange={(e) => setInitialval(e.target.value)} />
                     <div className="item1btn">
-                        <button id="addbtn" className="item1-item" type="button" title="Add Task" onClick={addTask}> <IoClipboardOutline /> </button>
+                        <button id="addbtn" className="item1-item" type="button" title="Add Task" onClick={addTask}> <FiPlus /> </button>
                         <button id="resetbtn" className="item1-item" type="button" title="Delete All Task" onClick={clearall} ><IoReloadOutline /></button>
                     </div>
                 </div>
@@ -47,7 +48,7 @@ function App() {
                     listval.map((item, index) => {
                         return (<div className="item2">
                             <p className="item2-item" key={index}>{item} </p>
-                            <button className="item2-item" type="button" id="removebtn" title="Delete Task" onClick={() => removeTask(index)}><IoMdDoneAll /></button>
+                            <button className="item2-item" type="button" id="removebtn" title="Delete Task" onClick={() => removeTask(index)}><FiTrash2 /></button>
 
 
                         </div>)
